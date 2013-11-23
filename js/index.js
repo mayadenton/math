@@ -15,6 +15,14 @@ require(['../lib/underscore-min', '../lib/jquery-1.7.min'], function () {
                 return randomFrom(_.range(parseInt(value), 100)) + ' - ' + value;
             };
         },
+        divide: function (value) {
+            var options = _.range(1, parseInt(70 / value));
+            console.log(randomFrom(options) * value);
+
+            return  function () {
+                return (randomFrom(options) * value) + ' ÷ ' + value;
+            };
+        },
         times: function (value) {
             return  function () {
                 return randomFrom(_.range(1, 12)) + ' x ' + value;
@@ -26,6 +34,7 @@ require(['../lib/underscore-min', '../lib/jquery-1.7.min'], function () {
         var questions = {};
         while (_.keys(questions).length < count) {
             var newQuestion = randomFrom(options)();
+            console.log(newQuestion);
             questions[newQuestion] = newQuestion;
         }
         $('#questions ol').empty();
