@@ -32,9 +32,9 @@ require(['../lib/underscore-min', '../lib/jquery-1.7.min'], function () {
 
     function gen(count, options) {
         var questions = {};
-        while (_.keys(questions).length < count) {
+        var maxIterations = count * count;
+        while (_.keys(questions).length < count && maxIterations-- > 0) {
             var newQuestion = randomFrom(options)();
-            console.log(newQuestion);
             questions[newQuestion] = newQuestion;
         }
         $('#questions ol').empty();
