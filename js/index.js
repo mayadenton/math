@@ -25,14 +25,21 @@ require(['../lib/underscore-min', '../lib/jquery-1.7.min'], function () {
         },
         times: function (value) {
             return  function () {
-                return randomFrom(_.range(1, 13)) + ' x ' + value;
+                return randomFrom(_.range(1, 12)) + ' x ' + value;
+            };
+        },
+        double: function (value) {
+            return  function () {
+                var range = value.split(',');
+                return randomFrom(_.range(parseInt(range[0]), parseInt(range[1])+1)) + ' x ' + 2;
             };
         }
+
     };
 
     function gen(count, options) {
         var questions = {};
-        var maxIterations = count * count;
+        var maxIterations = count * 10;
         while (_.keys(questions).length < count && maxIterations-- > 0) {
             var newQuestion = randomFrom(options)();
             questions[newQuestion] = newQuestion;
