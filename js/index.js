@@ -25,7 +25,7 @@ require(['../lib/underscore-min', '../lib/jquery-1.7.min'], function () {
         },
         times: function (value) {
             return  function () {
-                return randomFrom(_.range(1, 12)) + ' x ' + value;
+                return randomFrom(_.range(1, 13)) + ' x ' + value;
             };
         }
     };
